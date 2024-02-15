@@ -70,6 +70,8 @@ let rates: [string, number][] = [];
 
 // An instance of the FetchWrapper class with the base URL of the API
 // A constant that stores the API key for authentication
+const apiKey = '4fd44f9f841b76b1690fe4f4';
+const instanceFetchWrapper = new FetchWrapper(`https://v6.exchangerate-api.com/v6/${apiKey}`);
 
 // A call to the get method of the API instance with the endpoint that requests the latest conversion rates for the USD currency
 // Assign the conversion_rates property of the response data to the rates variable
