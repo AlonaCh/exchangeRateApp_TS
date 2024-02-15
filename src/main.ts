@@ -75,6 +75,14 @@ const instanceFetchWrapper = new FetchWrapper(`https://v6.exchangerate-api.com/v
 
 // A call to the get method of the API instance with the endpoint that requests the latest conversion rates for the USD currency
 // Assign the conversion_rates property of the response data to the rates variable
+instanceFetchWrapper.get('/latest/USD').then((data: Data) => {
+ const rates = Object.entries(data.conversion_rates);
+});
+// get(endpoint: string): Promise<Data> {
+//   return fetch(this.baseURL + endpoint).then((response) => response.json());
+// }
+
+// Assign the conversion_rates property of the response data to the rates variable
 
 // Add an event listener to the base element that invokes the getConversionRates function when the user selects a new value
 // base.addEventListener('change', getConversionRates);
