@@ -1,3 +1,4 @@
+
 interface Data {
   conversion_rates: Record<string, number>;
 }
@@ -69,15 +70,16 @@ HTMLParagraphElement;
 let rates: [string, number][] = [];
 
 // An instance of the FetchWrapper class with the base URL of the API
-// A constant that stores the API key for authentication
-const apiKey = '4fd44f9f841b76b1690fe4f4';
-const instanceFetchWrapper = new FetchWrapper(`https://v6.exchangerate-api.com/v6/${apiKey}`);
+// // A constant that stores the API key for authentication
+// const apiKey = import.meta.env.API_KEY;
+
+let instanceFetchWrapper = new FetchWrapper(`https://v6.exchangerate-api.com/v6/${API_KEY}`);
 
 // A call to the get method of the API instance with the endpoint that requests the latest conversion rates for the USD currency
 // Assign the conversion_rates property of the response data to the rates variable
  instanceFetchWrapper.get('/latest/USD').then((data: Data) => {
-  const rates = Object.entries(data.conversion_rates);
-  });
+  rates = Object.entries(data.conversion_rates);
+   });
 
 // Add an event listener to the base element that invokes the getConversionRates function when the user selects a new value
 baseCurrency.addEventListener('change', getConversionRates);
@@ -99,9 +101,3 @@ function getConversionRates() {
     result.textContent = `1 ${base} = ${rate[1]} ${target}`;
   }
 }
-
-// Iterate over the rates array and find the rate that matches the target currency value
-
-// If the currency name matches the target currency value
-// Assign the conversion rate to the textContent property of the result element, which displays it on the web page
-
